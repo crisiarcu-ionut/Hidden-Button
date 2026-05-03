@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Hidden Button</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body class="bg-dark">
+        <header>
+            <h1 class="text-light">Hidden Button</h1>
+            <p class="text-light">Plus bonus, more buttons!</p>
+        </header>
+        <form id="input" name="input" onsubmit="generateButtons()" method="post">
+            <div class="input-group m-5 w-25">
+                <input type="text" id="noButtons" placeholder="Number of buttons" class="form-control bg-dark text-light" name="noButtons">
+                <input type="submit" class="btn btn-secondary" value="Generate">
+            </div>
+        </form>
+        <div id="buttons"></div>
+        <script src="script.js"></script>
+    </body>
+</html>

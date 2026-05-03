@@ -1,0 +1,6 @@
+header {
+    text-align: center;
+}
+.form-control::placeholder {
+    color: white;
+}
