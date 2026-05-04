@@ -1,18 +1,19 @@
 function validateForm() {
     let noButtons = document.forms["input"]["noButtons"].value;
     if (noButtons == "") {
-        alert("Field must not be empty!");
+        document.getElementById("invalid-text").innerHTML = "Field must not be empty!";
         return false;
     }
     noButtons = Number(noButtons);
     if (Number.isNaN(noButtons)){
-        alert("Field must contain a number!");
+        document.getElementById("invalid-text").innerHTML = "Field must contain a number!";
         return false;
     }
     if (!Number.isInteger(noButtons) || noButtons <= 0) {
-        alert("Number must be a positive integer!");
+        document.getElementById("invalid-text").innerHTML = "Number must be a positive integer!";
         return false;
     }
+    document.getElementById("invalid-text").innerHTML = "";
     return noButtons;
 }
 
@@ -26,12 +27,22 @@ function onBtnClick() {
                 button.disabled = true;
             }
         );
-        alert("You found the hidden button!!!");
+        document.getElementById("success-text").innerHTML = "You found the hidden button!!!";
     } else {
         this.innerHTML = "Nope!";
         this.classList.replace("btn-secondary", "btn-danger");
         this.disabled = true;
     }
+}
+
+function generateButton(parent) {
+    document.getElementById("success-text").innerHTML = "";
+    let button = document.createElement("button");
+    button.innerHTML = "Press me";
+    button.classList.add("btn", "btn-secondary", "m-4");
+    button.id = "button-id-" + parent.childNodes.length;
+    button.onclick = onBtnClick.bind(button);
+    parent.appendChild(button);
 }
 
 function generateButtons() {
@@ -47,12 +58,7 @@ function generateButtons() {
     buttons.classList.add("text-center")
     document.body.appendChild(buttons);
     for (let i = 0; i < noButtons; ++i) {
-        let button = document.createElement("button");
-        button.innerHTML = "Press me";
-        button.classList.add("btn", "btn-secondary", "m-4");
-        button.id = "button-id-" + i;
-        button.onclick = onBtnClick.bind(button);
-        buttons.appendChild(button);
+        generateButton(buttons);
     }
 }
 
